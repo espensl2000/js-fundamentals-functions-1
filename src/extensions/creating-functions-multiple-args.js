@@ -9,6 +9,13 @@
 // -1, 1        | [-1, 0, 1]
 //
 // TODO: write code below
+function lowerToUpper(num1, num2) {
+  const arr = []
+  for (let i = num1; i <= num2; i++) {
+    arr.push(i)
+  }
+  return arr
+}
 
 // 2. define a function that takes two arguments: a string and a number.
 // The function should return the same string but in upper case with exclamation
@@ -21,6 +28,9 @@
 // error, 10    | ERROR!!!!!!!!!!
 //
 // TODO: write code below
+function todo2(string, number) {
+  return string.toUpperCase() + '!'.repeat(number)
+}
 
 // 3. define a function that takes two arguments: a string and a number.
 // The function should return the new time in 24hr time after adding the additional time in minutes.
@@ -33,10 +43,28 @@
 // '12:50', 120 | '14:50'
 // '23:50', 30  | '00:20'
 // TODO: write code below
+function todo3(string, number) {
+  const totalminutes =
+    parseInt(string.split(':')[0]) * 60 +
+    parseInt(string.split(':')[1]) +
+    number
+
+  let hours = Math.floor(totalminutes / 60)
+  const minutes =
+    (totalminutes % 60).toString().length === 1
+      ? '0' + (totalminutes % 60)
+      : totalminutes % 60
+
+  if (hours > 23) {
+    hours = '00'
+  }
+
+  return `${hours}:${minutes}`
+}
 
 // TODO: change the exported value to be the name of the function you defined
 module.exports = {
-  a: undefined, // 1. change undefined to be the name of the function defined to create the range of numbers (the first todo)
-  b: undefined, // 2. change undefined to be the name of the function defined to return the string with exclamations (the second todo)
-  c: undefined // etc
+  a: lowerToUpper, // 1. change undefined to be the name of the function defined to create the range of numbers (the first todo)
+  b: todo2, // 2. change undefined to be the name of the function defined to return the string with exclamations (the second todo)
+  c: todo3 // etc
 }
